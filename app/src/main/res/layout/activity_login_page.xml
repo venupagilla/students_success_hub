@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:backgroundTint="@color/black"
+    tools:context=".Login_page">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleX="5"
+        android:scaleY="5"
+        android:text="@string/login" />
+
+    <EditText
+        android:id="@+id/email3"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="120dp"
+        android:accessibilityLiveRegion="polite"
+        android:autofillHints="username"
+        android:ems="10"
+        android:hint="@string/enter_username"
+        android:inputType="textEmailAddress"
+        android:keepScreenOn="true"
+        android:selectAllOnFocus="false"
+        android:singleLine="true"
+        android:soundEffectsEnabled="false"
+        android:textColorHighlight="#FF9800"
+        android:textColorHint="#8D6E63" />
+
+    <EditText
+        android:id="@+id/Enterpassword"
+        style="@android:style/Widget.Material.Light.EditText"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:alpha="50"
+        android:autofillHints="password"
+        android:ems="10"
+        android:hint="@string/enter_passsowrd"
+        android:inputType="textPassword"
+        android:textColorHint="#8D6E63" />
+
+    <Button
+        android:id="@+id/Enterbutton"
+        android:layout_width="192dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="#00Fc9c"
+        android:text="@string/enter"
+        android:textColor="#000000"
+        android:textColorLink="#512DA8" />
+
+    <TextView
+        android:id="@+id/didnthaveaccount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="Don't have an account? Register here"
+        android:textColor="#1b97c4" />
+
+</LinearLayout>
