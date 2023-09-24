@@ -9,14 +9,18 @@
     tools:context=".MainActivity">
 
 
-    <TextView
+    <Button
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
+        android:includeFontPadding="false"
+        android:paddingRight="24dp"
         android:text="@string/logout"
         android:textColor="@color/blue"
+        app:cornerRadius="@null"
+        app:iconPadding="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.983"
