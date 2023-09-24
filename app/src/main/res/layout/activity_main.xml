@@ -28,4 +28,21 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
+    <Button
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:includeFontPadding="true"
+        android:paddingRight="125dp"
+        android:text="@string/ssh"
+        android:textColor="#000000"
+        android:backgroundTint="@color/cc5037"
+        app:cornerRadius="@null"
+        app:iconPadding="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/textView2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
