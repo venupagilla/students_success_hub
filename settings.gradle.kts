@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "cvbjkhg"
+rootProject.name = "Students_success_hub"
 include(":app")
