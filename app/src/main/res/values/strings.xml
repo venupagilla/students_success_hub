@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">SSH</string>
     <string name="login">Login</string>
     <string name="enter_username">Enter username</string>
     <string name="enter_passsowrd">Enter password</string>

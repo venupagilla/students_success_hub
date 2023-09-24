@@ -32,10 +32,11 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:includeFontPadding="true"
-        android:paddingRight="125dp"
+        android:paddingEnd="75dp"
+        android:paddingStart="75dp"
         android:text="@string/ssh"
         android:textColor="#000000"
         android:backgroundTint="@color/cc5037"
@@ -44,5 +45,17 @@
         app:layout_constraintEnd_toStartOf="@+id/textView2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="416dp"
+        android:layout_height="659dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="71dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
