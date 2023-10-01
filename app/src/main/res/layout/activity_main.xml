@@ -10,10 +10,21 @@
 
 
     <Button
+        android:id="@+id/upload_button1"
+        android:layout_width="277dp"
+        android:layout_height="205dp"
+        android:layout_marginTop="28dp"
+        android:text="Upload"
+        android:textSize="40dp"
+        android:backgroundTint="@color/blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_page_button" />
+
+    <Button
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:includeFontPadding="false"
         android:paddingRight="24dp"
@@ -23,39 +34,21 @@
         app:iconPadding="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.983"
+        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/upload_button1"
+        app:layout_constraintVertical_bias="0.895" />
 
     <Button
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:includeFontPadding="true"
-        android:paddingEnd="75dp"
-        android:paddingStart="75dp"
-        android:text="@string/ssh"
-        android:textColor="#000000"
+        android:id="@+id/main_page_button"
+        android:layout_width="277dp"
+        android:layout_height="205dp"
+        android:layout_marginTop="92dp"
+        android:textSize="40dp"
+        android:text="Main page"
         android:backgroundTint="@color/cc5037"
-        app:cornerRadius="@null"
-        app:iconPadding="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ScrollView
-        android:layout_width="416dp"
-        android:layout_height="659dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="71dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
