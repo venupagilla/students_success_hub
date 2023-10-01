@@ -5,11 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
     TextView teext;
+    Button button;
 
 
     @Override
@@ -17,6 +19,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         teext=findViewById(R.id.textView2);
+        button=findViewById(R.id.upload_button1);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getApplicationContext(), fileadd.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         teext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
