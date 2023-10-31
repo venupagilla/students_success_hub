@@ -11,7 +11,10 @@ import android.os.Bundle;
 
 public class fileadd extends AppCompatActivity {
 
-    private String selectedItem2; // Declare as a member variable
+    private String selectedsem; // Declare as a member variable
+    private String selectedbatch;
+    private String selectedexamtype;
+    private String selectedsub;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,16 +44,19 @@ public class fileadd extends AppCompatActivity {
         examAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         exam_spinner.setAdapter(examAdapter);
 
+        //upload button
+        Button upload_button= findViewById(R.id.upload_button2);
+
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 // Handle the selected item here
-                String selectedItem = (String) parentView.getSelectedItem();
-                Toast.makeText(getApplicationContext(), "Selected: " + selectedItem, Toast.LENGTH_SHORT).show();
+                selectedbatch = (String) parentView.getSelectedItem();
+                Toast.makeText(getApplicationContext(), "Selected Batch : " + selectedbatch, Toast.LENGTH_SHORT).show();
 
                 // Check if "C21" is selected
-                if (selectedItem.equals("C21")) {
+                if (selectedbatch.equals("C21")) {
                     // Show the second Spinner (spinner2)
                     sem_spinner.setVisibility(View.VISIBLE);
                 } else {
@@ -69,9 +75,9 @@ public class fileadd extends AppCompatActivity {
         sem_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                selectedItem2 = (String) parentView.getSelectedItem(); // Store the selected item
-                Toast.makeText(getApplicationContext(), "Selected (Spinner 2): " + selectedItem2, Toast.LENGTH_SHORT).show();
-                if (selectedItem2.equals("sem 1")||selectedItem2.equals("sem 2")||selectedItem2.equals("sem 3")||selectedItem2.equals("sem 4")||selectedItem2.equals("sem 5")) {
+                selectedsem = (String) parentView.getSelectedItem(); // Store the selected item
+                Toast.makeText(getApplicationContext(), "Selected sem : " + selectedsem, Toast.LENGTH_SHORT).show();
+                if (selectedsem.equals("sem 1")||selectedsem.equals("sem 2")||selectedsem.equals("sem 3")||selectedsem.equals("sem 4")||selectedsem.equals("sem 5")) {
                     // Show the second Spinner (spinner2)
                     exam_spinner.setVisibility(View.VISIBLE);
                 } else {
@@ -88,10 +94,33 @@ public class fileadd extends AppCompatActivity {
             }
         });
 
+        exam_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                // Handle the selected item here
+                selectedexamtype = (String) parentView.getSelectedItem();
+                Toast.makeText(getApplicationContext(), "Selected Exam type : " + selectedexamtype, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // Handle the case where nothing is selected
+            }
+        });
+
         // Initialize the fourth Spinner (sub_spinner)
         Spinner sub_spinner = findViewById(R.id.spinner4);
         // You can populate sub_spinner based on selectedItem2 here
         populateSubSpinner();
+
+
+        //code for uploading using upload button
+        upload_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
     private void populateSubSpinner() {
@@ -104,15 +133,15 @@ public class fileadd extends AppCompatActivity {
         String[] sub_real_items;
 
         // Determine which array to use based on selectedItem2
-        if ("sem 1".equals(selectedItem2)) {
+        if ("sem 1".equals(selectedsem)) {
             sub_real_items = sub_items1;
-        } else if ("sem 2".equals(selectedItem2)) {
+        } else if ("sem 2".equals(selectedsem)) {
             sub_real_items = sub_items2;
-        } else if ("sem 3".equals(selectedItem2)) {
+        } else if ("sem 3".equals(selectedsem)) {
             sub_real_items = sub_items3;
-        } else if ("sem 4".equals(selectedItem2)) {
+        } else if ("sem 4".equals(selectedsem)) {
             sub_real_items = sub_items4;
-        } else if ("sem 5".equals(selectedItem2)) {
+        } else if ("sem 5".equals(selectedsem)) {
             sub_real_items = sub_items5;
         } else {
             // Handle other cases or set a default array
@@ -133,9 +162,9 @@ public class fileadd extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 // Handle the selected item here
-                String selected_sub_Item = (String) parentView.getSelectedItem();
-                Toast.makeText(getApplicationContext(), "Selected: " + selected_sub_Item, Toast.LENGTH_SHORT).show();
-                if (!selected_sub_Item.equals("subject")) {
+                selectedsub = (String) parentView.getSelectedItem();
+                Toast.makeText(getApplicationContext(), "Selected: " + selectedsub, Toast.LENGTH_SHORT).show();
+                if (!selectedsub.equals("subject")) {
                     upload_button2.setVisibility(View.VISIBLE);
                 }else{
                     upload_button2.setVisibility(View.GONE);
