@@ -73,5 +73,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner4"/>
 
+    <Button
+        android:id="@+id/view_files_button"
+        android:layout_width="192dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="@color/cc5037"
+        android:text="@string/view_files"
+        android:textColor="#000000"
+        android:textColorLink="#512DA8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/upload_button2"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

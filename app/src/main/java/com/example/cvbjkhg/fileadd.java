@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -26,6 +27,9 @@ import com.google.firebase.storage.UploadTask;
 
 public class fileadd extends AppCompatActivity {
 
+
+
+
     private String selectedsem; // Declare as a member variable
     private String selectedbatch;
     private String selectedexamtype;
@@ -36,10 +40,23 @@ public class fileadd extends AppCompatActivity {
     StorageReference storageReference;
     DatabaseReference databaseReference;
 
+    TextView textView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fileadd);
+
+        //code to create a button to go to view files page
+        textView=findViewById(R.id.view_files_button);
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), View_files.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
 
 
@@ -135,7 +152,7 @@ public class fileadd extends AppCompatActivity {
 
         //Database
         storageReference= FirebaseStorage.getInstance().getReference();
-        databaseReference= FirebaseDatabase.getInstance().getReference("uploads");
+        databaseReference= FirebaseDatabase.getInstance().getReference("upload");
 
 
         //code for uploading using upload button
@@ -169,7 +186,7 @@ public class fileadd extends AppCompatActivity {
         progressDialog.setTitle("uploading..");
         progressDialog.show();
 
-        StorageReference reference = storageReference.child("uploads/"+System.currentTimeMillis()+".pdf");
+        StorageReference reference = storageReference.child("upload/"+System.currentTimeMillis()+".pdf");
         reference.putFile(data)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override

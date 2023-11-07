@@ -3,6 +3,7 @@ package com.example.cvbjkhg;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -24,6 +25,8 @@ public class Login_page extends AppCompatActivity {
     FirebaseAuth mAuth2;
     Button buttonL;
     TextView registertext;
+
+    TextView skip;
 
     @Override
     public void onStart() {
@@ -47,11 +50,13 @@ public class Login_page extends AppCompatActivity {
         editpasswordL=findViewById(R.id.Enterpassword);
         buttonL=findViewById(R.id.Enterbutton);
         mAuth2=FirebaseAuth.getInstance();
-        registertext=findViewById(R.id.didnthaveaccount);
-        registertext.setOnClickListener(new View.OnClickListener() {
+        skip=findViewById(R.id.skip_login);
+
+        //code for the click on skip login text
+        skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getApplicationContext(), Register_page.class);
+                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                 startActivity(intent);
                 finish();
             }
