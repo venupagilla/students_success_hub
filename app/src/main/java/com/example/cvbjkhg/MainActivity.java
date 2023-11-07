@@ -12,6 +12,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class MainActivity extends AppCompatActivity {
     TextView teext;
     Button button;
+    Button button2;
 
 
     @Override
@@ -20,6 +21,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         teext=findViewById(R.id.textView2);
         button=findViewById(R.id.upload_button1);
+        button2=findViewById(R.id.main_page_button);
+
+        //code for the intent of opening the viewfiles page by clicking on Main page
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getApplicationContext(), View_files.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override

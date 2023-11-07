@@ -152,7 +152,7 @@ public class fileadd extends AppCompatActivity {
 
         //Database
         storageReference= FirebaseStorage.getInstance().getReference();
-        databaseReference= FirebaseDatabase.getInstance().getReference("upload");
+        databaseReference= FirebaseDatabase.getInstance().getReference("uploads");
 
 
         //code for uploading using upload button

@@ -7,10 +7,12 @@
     tools:context=".View_files">
 
     <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:id="@+id/files_view"
+        android:layout_width="376dp"
+        android:layout_height="578dp"
+        android:layout_margin="10dp"
         android:padding="5dp"
-        android:layout_margin="10dp"/>
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="71dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

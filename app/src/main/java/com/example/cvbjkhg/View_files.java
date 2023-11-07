@@ -4,8 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,17 +41,30 @@ public class View_files extends AppCompatActivity {
 
         viewfiles();
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                pdfClass pdfupload = uploads.get(i);
 
-                pdfClass pdfupload=uploads.get(i);
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setType("application/pdf");
-                startActivity(intent);
+                // Assuming pdfClass contains a field with the URL of the PDF file
+                String pdfUrl = pdfupload.getUrl();
 
+                if (pdfUrl != null && !pdfUrl.isEmpty()) {
+                    // Create an Intent to view the PDF using an external viewer
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setDataAndType(Uri.parse(pdfUrl), "application/pdf");
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+                    try {
+                        startActivity(intent);
+                    } catch (ActivityNotFoundException e) {
+                        // Handle the case where a suitable PDF viewer is not installed
+                        // You can display a message to the user or prompt them to install a viewer.
+                    }
+                }
             }
         });
+
 
 
 
@@ -57,7 +72,8 @@ public class View_files extends AppCompatActivity {
     }
 
     private void viewfiles() {
-        databaseReference= FirebaseDatabase.getInstance().getReference("upload");
+
+        databaseReference= FirebaseDatabase.getInstance().getReference("uploads");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -65,8 +81,8 @@ public class View_files extends AppCompatActivity {
                     pdfClass pdfClass=postsnapshot.getValue(com.example.cvbjkhg.pdfClass.class);
                     uploads.add(pdfClass);
                 }
-                String[] Upload= new String[upload.size()];
-                for (int i=0;i<Upload.length;i++){
+                String[] Uploads= new String[uploads.size()];
+                for (int i=0;i<Uploads.length;i++){
                     Uploads[i]=uploads.get(i).getName();
                 }
                 ArrayAdapter<String> adapter=new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1,Uploads){
