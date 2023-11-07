@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.example.cvbjkhg.pdfClass;
+
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -76,7 +78,7 @@ public class fileadd extends AppCompatActivity {
 
         //initializing the third spinner
         Spinner exam_spinner = findViewById(R.id.spinner3);
-        String[] exam_items = {"Mid 1", "Mid 2", "Sem"};
+        String[] exam_items = {"exam type","Mid 1", "Mid 2", "Semester"};
         ArrayAdapter<String> examAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, exam_items);
         examAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         exam_spinner.setAdapter(examAdapter);
@@ -152,7 +154,7 @@ public class fileadd extends AppCompatActivity {
 
         //Database
         storageReference= FirebaseStorage.getInstance().getReference();
-        databaseReference= FirebaseDatabase.getInstance().getReference("uploads");
+        databaseReference= FirebaseDatabase.getInstance().getReference("upload");
 
 
         //code for uploading using upload button
@@ -185,8 +187,9 @@ public class fileadd extends AppCompatActivity {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("uploading..");
         progressDialog.show();
+        String hi=hello();
 
-        StorageReference reference = storageReference.child("upload/"+System.currentTimeMillis()+".pdf");
+        StorageReference reference = storageReference.child("upload/"+hi+".pdf");
         reference.putFile(data)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
@@ -197,7 +200,7 @@ public class fileadd extends AppCompatActivity {
                         while (!uriTask.isComplete());
                         Uri url=uriTask.getResult();
 
-                        String pdfname= selectedbatch + " " + selectedsem + " " + selectedexamtype + " " + selectedsub;
+                        String pdfname= selectedbatch + "_" + selectedsem + "_" + selectedexamtype + "_" + selectedsub;
 
                         pdfClass pdfClass = new pdfClass(pdfname,url.toString());
                         databaseReference.child(databaseReference.push().getKey()).setValue(pdfClass);
@@ -215,6 +218,10 @@ public class fileadd extends AppCompatActivity {
 
                     }
                 });
+    }
+
+    private String hello() {
+        return selectedbatch + "_" + selectedsem + "_" + selectedexamtype + "_" + selectedsub;
     }
 
     private void populateSubSpinner() {

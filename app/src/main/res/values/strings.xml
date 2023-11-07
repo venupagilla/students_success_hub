@@ -25,4 +25,6 @@
     <string name="skip_login">Skip login</string>
     <string name="don_t_have_an_account_register_here">Don\'t have an account? Register here</string>
     <string name="view_files">view files</string>
+    <string name="search">Search</string>
+    <string name="search_file">search file</string>
 </resources>

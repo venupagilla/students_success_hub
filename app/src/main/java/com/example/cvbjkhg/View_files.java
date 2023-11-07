@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -30,11 +31,22 @@ public class View_files extends AppCompatActivity {
     ListView listView;
     DatabaseReference databaseReference;
     List<pdfClass> uploads;
+    Button search_button7;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_files);
+
+        search_button7=findViewById(R.id.search_button);
+        search_button7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), search_1.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         listView=findViewById(R.id.files_view);
         uploads = new ArrayList<>();
@@ -73,7 +85,7 @@ public class View_files extends AppCompatActivity {
 
     private void viewfiles() {
 
-        databaseReference= FirebaseDatabase.getInstance().getReference("Uploaded");
+        databaseReference= FirebaseDatabase.getInstance().getReference("upload");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
