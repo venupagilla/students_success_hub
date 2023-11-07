@@ -73,7 +73,7 @@ public class View_files extends AppCompatActivity {
 
     private void viewfiles() {
 
-        databaseReference= FirebaseDatabase.getInstance().getReference("uploads");
+        databaseReference= FirebaseDatabase.getInstance().getReference("Uploaded");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
