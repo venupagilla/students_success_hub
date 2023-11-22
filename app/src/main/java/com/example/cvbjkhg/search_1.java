@@ -35,6 +35,7 @@ public class search_1 extends AppCompatActivity {
     private String selectedbatch_1;
     private String selectedexamtype_1;
     private String selectedsub_1;
+    private String selected_qrn2;
     private String fileUrl;
     ListView listView;
     DatabaseReference databaseReference;
@@ -67,6 +68,13 @@ public class search_1 extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_1.setAdapter(adapter);
 
+        // initializing the qrn spinner
+        String[] type_items2 = {"Type", "Notes","Question papers"};
+        Spinner spinner_n2 = findViewById(R.id.spinner_n2);
+        ArrayAdapter<String> adapter_n = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, type_items2);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_n2.setAdapter(adapter_n);
+
         Spinner sem_spinner = findViewById(R.id.spinner_2);
         String[] sem_items = {"sem", "sem 1", "sem 2", "sem 3", "sem 4", "sem 5"};
         ArrayAdapter<String> semAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, sem_items);
@@ -94,6 +102,19 @@ public class search_1 extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
+
+        spinner_n2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                // Handle the selected item here
+                selected_qrn2 = (String) parentView.getSelectedItem();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // Handle the case where nothing is selected
             }
         });
 
@@ -158,7 +179,7 @@ public class search_1 extends AppCompatActivity {
     }
 
     private String getSelectedCriteria() {
-        return selectedbatch_1 + "_" + selectedsem_1 + "_" + selectedexamtype_1 + "_" + selectedsub_1;
+        return selectedbatch_1 + "_" + selected_qrn2 + "_" + selectedsem_1 + "_" + selectedexamtype_1 + "_" + selectedsub_1;
     }
 
     private void populateSubSpinner () {

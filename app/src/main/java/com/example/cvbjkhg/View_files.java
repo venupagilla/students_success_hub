@@ -44,7 +44,6 @@ public class View_files extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), search_1.class);
                 startActivity(intent);
-                finish();
             }
         });
 

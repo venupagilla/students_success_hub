@@ -56,7 +56,7 @@ public class Login_page extends AppCompatActivity {
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Register_page.class);
                 startActivity(intent);
                 finish();
             }

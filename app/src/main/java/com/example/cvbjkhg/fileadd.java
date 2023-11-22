@@ -20,6 +20,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -36,19 +38,22 @@ public class fileadd extends AppCompatActivity {
     private String selectedbatch;
     private String selectedexamtype;
     private String selectedsub;
+    private String selected_qrn;
 
 
 
     StorageReference storageReference;
     DatabaseReference databaseReference;
+    private FirebaseAuth mAuth;
+    Button textView;
 
-    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fileadd);
 
+        mAuth = FirebaseAuth.getInstance();
         //code to create a button to go to view files page
         textView=findViewById(R.id.view_files_button);
         textView.setOnClickListener(new View.OnClickListener() {
@@ -56,7 +61,6 @@ public class fileadd extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), View_files.class);
                 startActivity(intent);
-                finish();
             }
         });
 
@@ -68,6 +72,13 @@ public class fileadd extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, items);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+
+        // initializing the qrn spinner
+        String[] type_items = {"Type", "Notes","Question papers"};
+        Spinner spinner_n = findViewById(R.id.spinner_n);
+        ArrayAdapter<String> adapter_n = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, type_items);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_n.setAdapter(adapter_n);
 
         // Initialize the second Spinner (spinner2)
         Spinner sem_spinner = findViewById(R.id.spinner2);
@@ -102,6 +113,20 @@ public class fileadd extends AppCompatActivity {
                     // Hide the second Spinner (spinner2)
                     sem_spinner.setVisibility(View.GONE);
                 }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // Handle the case where nothing is selected
+            }
+        });
+
+        //set an onItemselectedListener for spinner_n
+        spinner_n.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                // Handle the selected item here
+                selected_qrn = (String) parentView.getSelectedItem();
             }
 
             @Override
@@ -166,12 +191,24 @@ public class fileadd extends AppCompatActivity {
         });
     }
 
-    private void selectfiles(){
-        Intent intent=new Intent();
-        intent.setType("application/pdf");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent,"select PDf file.."),1);
+    private void selectfiles() {
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user != null) {
+            if (user.getEmail().matches("annalaraghava0@gmail.com") || user.getEmail().matches("pagillavenu909@gmail.com") || user.getEmail().matches("tejakampally@gmail.com")) {
+                Intent intent = new Intent();
+                intent.setType("application/pdf");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent, "Select PDF file.."), 1);
+            } else {
+                // Display a toast message if the user is not allowed to upload
+                Toast.makeText(this, "User cannot upload files.", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            // Display a toast message if the user is not signed in
+            Toast.makeText(this, "Please sign in to upload files.", Toast.LENGTH_SHORT).show();
+        }
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -221,7 +258,7 @@ public class fileadd extends AppCompatActivity {
     }
 
     private String hello() {
-        return selectedbatch + "_" + selectedsem + "_" + selectedexamtype + "_" + selectedsub;
+        return selectedbatch +"_" + selected_qrn + "_" + selectedsem + "_" + selectedexamtype + "_" + selectedsub;
     }
 
     private void populateSubSpinner() {

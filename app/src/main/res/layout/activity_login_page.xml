@@ -26,7 +26,7 @@
         android:accessibilityLiveRegion="polite"
         android:autofillHints="username"
         android:ems="10"
-        android:hint="@string/enter_username"
+        android:hint="@string/enter_email_id"
         android:inputType="textEmailAddress"
         android:keepScreenOn="true"
         android:selectAllOnFocus="false"
@@ -59,13 +59,14 @@
         android:textColorLink="#512DA8" />
 
     <TextView
-    android:id="@+id/skip_login"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:clickable="true"
-    android:focusable="true"
-    android:text="@string/skip_login"
-    android:textColor="#1b97c4" />
+        android:id="@+id/skip_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:minHeight="48dp"
+        android:text="Don't have an account? Register here"
+        android:textColor="#0277BD" />
 
 
 </LinearLayout>

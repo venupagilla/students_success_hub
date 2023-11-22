@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent=new Intent(getApplicationContext(), View_files.class);
                 startActivity(intent);
-                finish();
             }
         });
 
@@ -38,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent=new Intent(getApplicationContext(), fileadd.class);
                 startActivity(intent);
-                finish();
             }
         });
         teext.setOnClickListener(new View.OnClickListener() {

@@ -26,7 +26,7 @@
         android:accessibilityLiveRegion="polite"
         android:autofillHints="username"
         android:ems="10"
-        android:hint="@string/enter_username"
+        android:hint="@string/enter_email_id"
         android:inputType="textEmailAddress"
         android:keepScreenOn="true"
         android:selectAllOnFocus="false"
@@ -58,13 +58,16 @@
         android:text="@string/enter"
         android:textColor="#000000"
         android:textColorLink="#512DA8" />
+
     <TextView
         android:id="@+id/Loginfromregister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Already registered ! Login here"
         android:clickable="true"
-        android:textColor="#1b97c4"/>
+        android:focusable="true"
+        android:minHeight="48dp"
+        android:text="@string/already_registered_login_here"
+        android:textColor="#1b97c4" />
 
 </LinearLayout>

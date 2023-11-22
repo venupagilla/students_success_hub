@@ -27,4 +27,6 @@
     <string name="view_files">view files</string>
     <string name="search">Search</string>
     <string name="search_file">search file</string>
+    <string name="enter_email_id">Enter email id</string>
+    <string name="already_registered_login_here">Already registered? Login here</string>
 </resources>
