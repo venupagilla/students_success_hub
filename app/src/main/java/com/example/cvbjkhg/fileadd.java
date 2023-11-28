@@ -103,7 +103,6 @@ public class fileadd extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 // Handle the selected item here
                 selectedbatch = (String) parentView.getSelectedItem();
-                Toast.makeText(getApplicationContext(), "Selected Batch : " + selectedbatch, Toast.LENGTH_SHORT).show();
 
                 // Check if "C21" is selected
                 if (selectedbatch.equals("C21")) {
@@ -140,7 +139,6 @@ public class fileadd extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 selectedsem = (String) parentView.getSelectedItem(); // Store the selected item
-                Toast.makeText(getApplicationContext(), "Selected sem : " + selectedsem, Toast.LENGTH_SHORT).show();
                 if (selectedsem.equals("sem 1")||selectedsem.equals("sem 2")||selectedsem.equals("sem 3")||selectedsem.equals("sem 4")||selectedsem.equals("sem 5")) {
                     // Show the second Spinner (spinner2)
                     exam_spinner.setVisibility(View.VISIBLE);
@@ -163,7 +161,6 @@ public class fileadd extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 // Handle the selected item here
                 selectedexamtype = (String) parentView.getSelectedItem();
-                Toast.makeText(getApplicationContext(), "Selected Exam type : " + selectedexamtype, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -237,7 +234,7 @@ public class fileadd extends AppCompatActivity {
                         while (!uriTask.isComplete());
                         Uri url=uriTask.getResult();
 
-                        String pdfname= selectedbatch + "_" + selectedsem + "_" + selectedexamtype + "_" + selectedsub;
+                        String pdfname= selectedbatch +"_" + selected_qrn + "_" + selectedsem + "_" + selectedexamtype + "_" + selectedsub;
 
                         pdfClass pdfClass = new pdfClass(pdfname,url.toString());
                         databaseReference.child(databaseReference.push().getKey()).setValue(pdfClass);
@@ -301,7 +298,6 @@ public class fileadd extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 // Handle the selected item here
                 selectedsub = (String) parentView.getSelectedItem();
-                Toast.makeText(getApplicationContext(), "Selected: " + selectedsub, Toast.LENGTH_SHORT).show();
                 if (!selectedsub.equals("subject")) {
                     upload_button2.setVisibility(View.VISIBLE);
                 }else{

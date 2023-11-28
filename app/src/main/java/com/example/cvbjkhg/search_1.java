@@ -91,7 +91,6 @@ public class search_1 extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 selectedbatch_1 = (String) parentView.getSelectedItem();
-                Toast.makeText(getApplicationContext(), "Selected Batch : " + selectedbatch_1, Toast.LENGTH_SHORT).show();
 
                 if (selectedbatch_1.equals("C21")) {
                     sem_spinner.setVisibility(View.VISIBLE);
@@ -122,7 +121,6 @@ public class search_1 extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 selectedsem_1 = (String) parentView.getSelectedItem();
-                Toast.makeText(getApplicationContext(), "Selected sem : " + selectedsem_1, Toast.LENGTH_SHORT).show();
                 if ("sem 1".equals(selectedsem_1) || "sem 2".equals(selectedsem_1) || "sem 3".equals(selectedsem_1) || "sem 4".equals(selectedsem_1) || "sem 5".equals(selectedsem_1)) {
                     exam_spinner.setVisibility(View.VISIBLE);
                 } else {
@@ -140,7 +138,6 @@ public class search_1 extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 selectedexamtype_1 = (String) parentView.getSelectedItem();
-                Toast.makeText(getApplicationContext(), "Selected Exam type : " + selectedexamtype_1, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -213,7 +210,6 @@ public class search_1 extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 selectedsub_1 = (String) parentView.getSelectedItem();
-                Toast.makeText(getApplicationContext(), "Selected: " + selectedsub_1, Toast.LENGTH_SHORT).show();
             }
 
             @Override
